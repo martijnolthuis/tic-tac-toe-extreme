@@ -1,0 +1,20 @@
+version: "3"
+services:
+  vue-app:
+    build:
+      context: .
+    container_name: tic-tac-toe-extreme
+    # makes hot-reloading possible
+    volumes:
+      - ${PWD}/src:/app/src
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    environment:
+      # development is used by vue-cli-service serve
+      - NODE_ENV=development
+      - __VUE_PROD_DEVTOOLS=true
+      # one way for hot reloading ... see above for details
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
