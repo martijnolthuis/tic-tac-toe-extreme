@@ -99,15 +99,45 @@ export default {
 </script>
 
 <style scoped>
-/* Styles for row of the main board */
 .board-row {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
+  display: flex; /* Flex layout for row alignment */
+  justify-content: center; /* Center aligns the individual cells */
+  margin-bottom: 15px; /* Margin for space between rows */
 }
-/* Styling for each cell (mini board) of the main board */
+
 .board-cell {
-  border: 2px solid red;
-  margin: 5px;
+  border: 3px solid #888; /* Border definition for each small board */
+  margin: 5px; /* Margin around each small board */
+  padding: 10px; /* Padding inside each small board */
+  background-color: #fff; /* White background color */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.won-board {
+  opacity: 0.6; /* Slight fade for a board that's won */
+  pointer-events: none; /* Makes it unclickable */
+  background-color: #ffeaa7; /* A light yellow shade for won board */
+}
+
+.highlight-board {
+  border: 5px dashed #55efc4; /* A bright green color to highlight the next playable board */
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  background-color: #2c3e50;
+  color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #34495e;
+}
+
+button:active {
+  transform: translateY(2px); /* Slight downward motion when clicked */
 }
 </style>

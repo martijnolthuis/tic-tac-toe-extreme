@@ -137,4 +137,9 @@ export default {
   opacity: 0.6;
   pointer-events: none;
 }
+
+.winning-cell {
+  background-color: #a8e6cf; /* A greenish tint for winning cells */
+  color: #2c3e50; /* Darker font color for contrast */
+}
 </style>

@@ -17,12 +17,23 @@ export default {
 </script>
 
 <style scoped>
-/* Styling for the cell button */
 .cell {
-  width: 50px;                  // Set width of the cell button
-  height: 50px;                 // Set height of the cell button
-  border: 1px solid black;      // Border for the cell
-  background-color: #f4f4f4;   // Background color of the cell
-  font-size: 24px;              // Font size for the X or O value
+  width: 50px;
+  height: 50px;
+  border: 2px solid #333; /* Cell border definition */
+  background-color: #f9f9f9; /* Light background for the cell */
+  font-size: 24px; /* Font size for the 'X' and 'O' */
+  color: #333; /* Text color */
+  cursor: pointer; /* Cursor style indicates it's clickable */
+  /* transition: background-color 0.2s ease; Transition effect for hover */
+  transition: all 0.3s ease; /* Smoothens the transition for all properties */
+}
+
+.cell:active {
+  transform: scale(0.95); /* Slightly shrinks the cell when clicked */
+}
+
+.cell:hover {
+  background-color: #f4f4f4; /* Slight change in color when hovering */
 }
 </style>
