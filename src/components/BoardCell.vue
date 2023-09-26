@@ -22,14 +22,15 @@
 import SingleCell from "./SingleCell.vue";
 
 export default {
-  props: ["subBoard", "position", "currentPlayer", "nextMovePosition"],
+  props: [
+    "subBoard",
+    "position",
+    "currentPlayer",
+    "nextMovePosition",
+    "winner",
+  ], // Here, 'winner' is only defined once
   components: {
     SingleCell,
-  },
-  data() {
-    return {
-      winner: null, // Tracks winner of this small board
-    };
   },
   computed: {
     // Check if this small board is the one where the next move should be made
@@ -58,8 +59,9 @@ export default {
       if (!this.subBoard[row][col] && !this.winner) {
         const potentialBoard = JSON.parse(JSON.stringify(this.subBoard));
         potentialBoard[row][col] = this.currentPlayer;
+        // Emitting an event to the parent if there's a winner
         if (this.isWinner(potentialBoard)) {
-          this.winner = this.currentPlayer;
+          this.$emit("board-won", this.position);
         }
 
         // Emit the move details to the parent
