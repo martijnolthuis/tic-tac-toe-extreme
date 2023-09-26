@@ -1,20 +1,18 @@
-version: "3"
-services:
-  vue-app:
+version: "3" # Specifies the version of the Docker Compose file format.
+
+services: # Define the services that should be run when `docker-compose up` is executed.
+  vue-app: # This is the name of the service (can be any string).
     build:
-      context: .
-    container_name: tic-tac-toe-extreme
-    # makes hot-reloading possible
+      context: . # Specifies the build context, which is the current directory.
+    container_name: tic-tac-toe-extreme # The name of the container created by this service.
     volumes:
-      - ${PWD}/src:/app/src
+      - ${PWD}/src:/app/src # Mounts the `src` directory from the host to the container. This ensures that changes in the host directory are immediately reflected inside the container.
     ports:
-      - "8080:8080"
-    stdin_open: true
-    tty: true
-    environment:
-      # development is used by vue-cli-service serve
-      - NODE_ENV=development
-      - __VUE_PROD_DEVTOOLS=true
-      # one way for hot reloading ... see above for details
-      - CHOKIDAR_USEPOLLING=true
-      - CHOKIDAR_INTERVAL=100
+      - "8080:8080" # Maps port 8080 of the container to port 8080 of the host machine.
+    stdin_open: true # Equivalent to -i. This keeps the standard input open.
+    tty: true # Allocates a pseudo-TTY, allowing for interaction.
+    environment: # Defines environment variables inside the container.
+      - NODE_ENV=development # Sets the environment as development. Useful for enabling certain development features.
+      - __VUE_PROD_DEVTOOLS=true # Allows Vue DevTools to be used even in production.
+      - CHOKIDAR_USEPOLLING=true # Enables polling, which can be necessary in some environments where file changes aren't detected.
+      - CHOKIDAR_INTERVAL=100 # Sets the polling interval to 100 milliseconds.
